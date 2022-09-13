@@ -56,7 +56,7 @@ def get_args():
 
     parser.add_argument('--model_type',
                         action = 'store',
-                        default = 'r',
+                        default = 'c',
                         type= str,
                         help= 'r for regression and c for classification')
 

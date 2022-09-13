@@ -5,7 +5,7 @@ import arg_parse
 
 
 
-def data_loader():
+def data_loader_fc():
     parser = arg_parse.get_args()
     args = parser.parse_args()
     print(args.model_type)
@@ -38,3 +38,9 @@ def data_loader():
         y_val = y[-300:]
         
     return x_train,x_test,x_val,y_train,y_test,y_val
+
+
+
+
+
+

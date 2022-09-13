@@ -1,6 +1,6 @@
 import arg_parse
 import keras_tuner
-from model import *
+from model_fc import *
 from data_loader import *
 
 
@@ -32,7 +32,7 @@ else:
         project_name="helloworld",
     )
 
-x_train,x_test,x_val,y_train,y_test,y_val = data_loader() 
+x_train,x_test,x_val,y_train,y_test,y_val = data_loader_fc() 
 tuner.search(x_train, y_train, epochs=2, validation_data=(x_val, y_val))
 models = tuner.get_best_models(num_models=2)
 best_model = models[0]
