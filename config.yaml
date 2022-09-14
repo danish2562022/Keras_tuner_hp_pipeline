@@ -1,7 +1,7 @@
 experiment_name: keras_tuner_pipeline
 input_files:
     models: models/model_fc.py
-    dataset: datasets/data_loader.py 
+    dataset: datasets/data_loader_classification.py 
 
 training_config:
     epochs: 5
