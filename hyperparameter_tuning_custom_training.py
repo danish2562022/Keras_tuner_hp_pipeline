@@ -23,7 +23,7 @@ tuner = keras_tuner.RandomSearch(
         project_name= "custom_training",
     )
 
-x_train,x_test,x_val,y_train,y_test,y_val = data_loader() 
+x_train,x_test,x_val,y_train,y_test,y_val = data_loader_fc() 
 tuner.search(x_train, y_train, epochs=args.epochs, validation_data=(x_val, y_val))
 best_hps = tuner.get_best_hyperparameters()[0]
 with open("best_model_params.txt", "w") as external_file:

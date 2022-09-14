@@ -4,39 +4,16 @@ from tensorflow import keras
 import numpy as np
 from tensorflow.keras import layers
 import arg_parse
+from model_fc import build_model,p
+print(p)
 
-parser = arg_parse.get_args()
-opt = parser.parse_args()
 class CustomTuning(keras_tuner.HyperModel):
 
     def build(self,hp):
         
-        model = keras.Sequential()
-        if opt.model_type == 'c':
-            model.add(layers.Flatten())
-        
-        for i in range(1,hp.Int("num_layers",opt.min_number_of_layers,opt.max_number_of_layers)+1):
+       model = build_model(self,hp) 
+       return model
        
-            model.add(
-                layers.Dense(
-                    # Tune number of units separately.
-                    units=hp.Int(f"units_{i}", min_value=opt.min_units_per_layers, max_value=opt.max_units_per_layers, step=32),
-                    kernel_regularizer = tf.keras.regularizers.L2(l2=hp.Float(f"lr_{i}", min_value=1e-4, max_value=1e-2, sampling="log")),
-                    activation=hp.Choice(f"activation_{i}", ["relu", "tanh"]),
-                )
-            )
-            if hp.Boolean(f"dropout_{i}"):
-                model.add(layers.Dropout(rate=0.25))
-
-        if opt.model_type == 'r':
-            model.add(layers.Dense(1))
-        else:
-            model.add(layers.Dense(opt.num_of_classes, activation="softmax"))
-
-        return model
-
-
-
     def fit(self, hp, model, x_train, y_train,epochs, validation_data, callbacks=None, **kwargs):
 
         batch_size = hp.Int("batch_size", 32, 128, step=32, default=64)
@@ -49,13 +26,13 @@ class CustomTuning(keras_tuner.HyperModel):
 
         learning_rate = hp.Float("lr", min_value=1e-4, max_value=1e-2, sampling="log")
 
-        if opt.choose_optimizer == 'adam':
+        if p["choose_optimizer"] == 'adam':
             optim = keras.optimizers.Adam(learning_rate=learning_rate)
 
-        elif opt.choose_optimizer == 'sgd':
+        elif p["choose_optimizer"] == 'sgd':
             optim = keras.optimizers.SGD(learning_rate=learning_rate)
 
-        if opt.model_type == 'r':
+        if p["model_type"] == 'r':
             loss_fn =  tf.keras.losses.MeanAbsoluteError()
         else:
             loss_fn = tf.keras.losses.CategoricalCrossentropy()

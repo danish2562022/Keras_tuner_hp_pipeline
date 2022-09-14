@@ -2,10 +2,9 @@ from tensorflow import keras
 from tensorflow.keras import layers
 
 
+    
 
-def params():
-
-    params = {
+p = {
         "min_number_of_layers": 1,
         "max_number_of_layers": 5,
         "model_type" : "c",
@@ -16,16 +15,11 @@ def params():
         "epochs" : 10,
         "max_trials": 2
     }
-    return params
-    
-
-
-def build_model(hp,input_shape = (28, 28)):
-    p = params()
-    
+def build_model(self,hp):
+   
     model = keras.Sequential()
-    model.add(keras.Input(shape=(28, 28)))
-    model.add(layers.Flatten())
+    if p['model_type'] == 'c':
+        model.add(layers.Flatten())
     for i in range(hp.Int("num_layers",1,p['max_number_of_layers'])):
        
         model.add(
@@ -39,19 +33,13 @@ def build_model(hp,input_shape = (28, 28)):
             model.add(layers.Dropout(rate=0.25))
     learning_rate = hp.Float("lr", min_value=1e-4, max_value=1e-2, sampling="log")
 
-    if p['choose_optimizer'] == 'adam':
-        optim = keras.optimizers.Adam(learning_rate=learning_rate)
-    elif p['choose_optimizer'] == 'sgd':
-        optim = keras.optimizers.SGD(learning_rate=learning_rate)
+   
     
     if p['model_type'] == 'r':
         model.add(layers.Dense(1))
-        model.compile(loss='mean_absolute_error',
-                optimizer=optim)
+        
     else:
         model.add(layers.Dense(p['num_of_classes'], activation="softmax"))
-        model.compile(
-            optimizer=optim, loss="categorical_crossentropy", metrics=["accuracy"],
-        )
+        
     return model
 
