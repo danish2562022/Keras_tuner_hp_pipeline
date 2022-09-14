@@ -1,24 +1,22 @@
-{'num_layers': 4, 'units_1': 96, 'lr_1': 0.006759117248051905, 'activation_1': 'tanh', 'dropout_1': True, 'units_2': 480, 'lr_2': 0.0004158417026474778, 'activation_2': 'tanh', 'dropout_2': True, 'units_3': 256, 'lr_3': 0.0013885415073872944, 'activation_3': 'relu', 'dropout_3': False, 'units_4': 448, 'lr_4': 0.008458543450046652, 'activation_4': 'relu', 'dropout_4': False, 'units_5': 288, 'lr_5': 0.00010461742993618505, 'activation_5': 'relu', 'dropout_5': False, 'batch_size': 96, 'lr': 0.0017684481940368423}
+{'num_layers': 3, 'units_1': 320, 'lr_1': 0.0005852306682279523, 'activation_1': 'relu', 'dropout_1': False, 'lr': 0.00022387427943419396, 'units_2': 32, 'lr_2': 0.00011887582580825929, 'activation_2': 'relu', 'dropout_2': False, 'units_3': 448, 'lr_3': 0.001141937009820313, 'activation_3': 'relu', 'dropout_3': True, 'batch_size': 96}
 Model: "sequential_1"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- dense_2 (Dense)             (None, 96)                1344      
+ flatten_1 (Flatten)         (None, 784)               0         
                                                                  
- dropout_1 (Dropout)         (None, 96)                0         
+ dense_4 (Dense)             (None, 320)               251200    
                                                                  
- dense_3 (Dense)             (None, 480)               46560     
+ dense_5 (Dense)             (None, 32)                10272     
                                                                  
- dropout_2 (Dropout)         (None, 480)               0         
+ dense_6 (Dense)             (None, 448)               14784     
                                                                  
- dense_4 (Dense)             (None, 256)               123136    
+ dropout_1 (Dropout)         (None, 448)               0         
                                                                  
- dense_5 (Dense)             (None, 448)               115136    
-                                                                 
- dense_6 (Dense)             (None, 1)                 449       
+ dense_7 (Dense)             (None, 10)                4490      
                                                                  
 =================================================================
-Total params: 286,625
-Trainable params: 286,625
+Total params: 280,746
+Trainable params: 280,746
 Non-trainable params: 0
 _________________________________________________________________

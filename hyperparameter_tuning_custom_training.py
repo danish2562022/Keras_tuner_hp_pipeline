@@ -1,18 +1,31 @@
 
+from cgi import print_environ
 import arg_parse
+import yaml
 import time
 import keras_tuner
-from contextlib import redirect_stdout
 from custom_model_tuning import *
-from data_loader import *
+from datasets.data_loader_classification import *
 from best_model import *
-
+import argparse
 
 
 st = time.time()
-parser = arg_parse.get_args()
+
+parser = argparse.ArgumentParser(description='Train my model.')
+parser.add_argument('--epochs',
+                      type =int,
+                      default = 2,
+                      help = "Number of epochs")
+parser.add_argument('--max_trials',
+                     type = int,
+                     default = 2,
+                     help = "Number of search spaces")
 args = parser.parse_args()
 
+with open('config.yaml') as f:
+    config_file = yaml.load(f, Loader = yaml.FullLoader) 
+model_name = config_file['input_files']['models'].split("/")[-1].split(".")[0]
 
 tuner = keras_tuner.RandomSearch(
         hypermodel = CustomTuning(),
@@ -20,10 +33,10 @@ tuner = keras_tuner.RandomSearch(
         overwrite = True,
         directory = "results",
         distribution_strategy=tf.distribute.MirroredStrategy(),
-        project_name= "custom_training",
+        project_name= str(model_name)+"_results",
     )
 
-x_train,x_test,x_val,y_train,y_test,y_val = data_loader_fc() 
+x_train,x_test,x_val,y_train,y_test,y_val = load_data() 
 tuner.search(x_train, y_train, epochs=args.epochs, validation_data=(x_val, y_val))
 best_hps = tuner.get_best_hyperparameters()[0]
 with open("best_model_params.txt", "w") as external_file:

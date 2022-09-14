@@ -3,14 +3,16 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 from tensorflow.keras import layers
-import arg_parse
-from model_fc import build_model,p
-print(p)
+from tqdm import tqdm
+from models.model_fc import build_model,p
+
 
 class CustomTuning(keras_tuner.HyperModel):
 
     def build(self,hp):
         
+        
+       print(p)
        model = build_model(self,hp) 
        return model
        
@@ -66,7 +68,7 @@ class CustomTuning(keras_tuner.HyperModel):
             callback.model = model    
         best_epoch_loss = float("inf")
 
-        for epoch in range(epochs):
+        for epoch in tqdm(range(epochs)):
             print(f"Epoch: {epoch}")
 
             for features,labels in train_ds:
