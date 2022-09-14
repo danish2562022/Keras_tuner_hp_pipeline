@@ -1,0 +1,2 @@
+SyntaxErrorin line 15 of /home/anwer/Desktop/keras/Keras_tuner_hyperparameter_optimization/Snakefile:
+Multiple run or shell keywords in rule run_model. (Snakefile, line 15)

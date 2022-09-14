@@ -5,7 +5,7 @@ import yaml
 import time
 import keras_tuner
 from custom_model_tuning import *
-from datasets.data_loader_classification import *
+from datasets.data_loader_images import *
 from best_model import *
 import argparse
 
@@ -42,7 +42,7 @@ best_hps = tuner.get_best_hyperparameters()[0]
 with open("best_model_params.txt", "w") as external_file:
     print(best_hps.values, file = external_file)
     external_file.close()
-best_model()
+# best_model()
 et = time.time()
 elapsed_time = et - st
 print('Execution time:', elapsed_time, 'seconds')

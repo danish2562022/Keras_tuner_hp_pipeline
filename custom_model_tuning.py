@@ -4,7 +4,7 @@ from tensorflow import keras
 import numpy as np
 from tensorflow.keras import layers
 from tqdm import tqdm
-from models.model_fc import build_model,p
+from models.model_cnn import build_model,p
 
 
 class CustomTuning(keras_tuner.HyperModel):
