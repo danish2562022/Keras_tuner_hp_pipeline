@@ -15,11 +15,11 @@ st = time.time()
 parser = argparse.ArgumentParser(description='Train my model.')
 parser.add_argument('--epochs',
                       type =int,
-                      default = 2,
+                      default = 1,
                       help = "Number of epochs")
 parser.add_argument('--max_trials',
                      type = int,
-                     default = 2,
+                     default = 1,
                      help = "Number of search spaces")
 args = parser.parse_args()
 
@@ -46,5 +46,10 @@ with open("best_model_params.txt", "w") as external_file:
 et = time.time()
 elapsed_time = et - st
 print('Execution time:', elapsed_time, 'seconds')
-
+best_hp = tuner.get_best_hyperparameters()[0]
+model = tuner.hypermodel.build(best_hp)
+model.build(input_shape =(None,28,28,1))
+print(best_hp.values)
+print(model.summary())
+print(model.optimizer)
 

@@ -1,12 +1,12 @@
 
 import keras_tuner
 import tensorflow as tf
-from tensorflow import keras
+import keras
 import numpy as np
 import json
 import ast
 from datasets.data_loader_classification import *
-from tensorflow.keras import layers
+from keras import layers
 from contextlib import redirect_stdout
 from models.model_fc import p
 

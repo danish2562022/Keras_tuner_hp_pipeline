@@ -9,7 +9,7 @@ p = {
         "min_number_of_filters" : 32,
         "max_numbe_of_filters" : 128,
         "kernel_size": [3,5,7],
-        "stride":[1,2],
+        "stride":[1,1],
         "max_pooling_size": [1,2],
         "min_number_of_dense_layers":1,
         "max_number_of_dense_layers": 3,

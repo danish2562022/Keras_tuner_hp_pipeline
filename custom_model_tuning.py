@@ -36,8 +36,10 @@ class CustomTuning(keras_tuner.HyperModel):
 
         if p["model_type"] == 'r':
             loss_fn =  tf.keras.losses.MeanAbsoluteError()
+        
         else:
             loss_fn = tf.keras.losses.CategoricalCrossentropy()
+            
 
         epoch_loss_metric = keras.metrics.Mean()
 
