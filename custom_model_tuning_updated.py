@@ -20,28 +20,17 @@ class CustomTuning(keras_tuner.HyperModel):
 
         elif p["choose_optimizer"] == 'sgd':
             optim = keras.optimizers.SGD(learning_rate=learning_rate)
-
+        model.compile(
+            optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"],
+        )
         return model
-       
-    def fit(self, hp, model, x_train, y_train,epochs, validation_data, callbacks=None, **kwargs):
-
-        batch_size = hp.Int("batch_size", 32, 128, step=32, default=64)
-        train_ds = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(
-            batch_size
-        )
-        validation_data = tf.data.Dataset.from_tensor_slices(validation_data).batch(
-            batch_size
+        return model
+    
+    def fit(self, hp, model, *args, **kwargs):
+        return model.fit(
+            *args,
+            batch_size=hp.Choice("batch_size", [16, 32]),
+            **kwargs,
         )
 
         
-
-        
-
-        if p["model_type"] == 'r':
-            loss_fn =  tf.keras.losses.MeanAbsoluteError()
-        
-        else:
-            loss_fn = tf.keras.losses.CategoricalCrossentropy()
-            
-
-        epoch_loss_metric = keras.metrics.Mean()

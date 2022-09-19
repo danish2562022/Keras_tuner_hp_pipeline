@@ -4,8 +4,8 @@ import arg_parse
 import yaml
 import time
 import keras_tuner
-from custom_model_tuning import *
-from datasets.data_loader_images import *
+from custom_model_tuning_updated import *
+from datasets.data_loader_classification import *
 from best_model import *
 import argparse
 
@@ -29,6 +29,7 @@ model_name = config_file['input_files']['models'].split("/")[-1].split(".")[0]
 
 tuner = keras_tuner.RandomSearch(
         hypermodel = CustomTuning(),
+        objective="val_accuracy",
         max_trials = args.max_trials,
         overwrite = True,
         directory = "results",
