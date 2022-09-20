@@ -1,5 +1,6 @@
-experiment_name: keras_tuner_pipeline
+experiment_name: keras_tuner_fully_connected_pipeline
 input_files:
+    app: "hyperparameter_tuning_custom_training.py"
     models: models/model_fc.py
     dataset: datasets/data_loader_classification.py 
 

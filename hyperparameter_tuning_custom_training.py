@@ -22,6 +22,10 @@ parser.add_argument('--max_trials',
                      type = int,
                      default = 10,
                      help = "Number of search spaces")
+parser.add_argument('--best_model_path',
+                     type = str,
+                     default = None,
+                     help = "give path to save best model")
 args = parser.parse_args()
 
 obj = "val_accuracy" if p['model_type'] == "c" else "val_loss"

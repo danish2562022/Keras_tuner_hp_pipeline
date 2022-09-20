@@ -19,7 +19,8 @@ p = {
         "num_of_classes" : 10,
         "choose_optimizer": "adam",
         "training_data_size": 1000,
-        "validation_data_size": 500        
+        "validation_data_size": 500,
+        "batch_size":[32,64,128]       
     }
 
 

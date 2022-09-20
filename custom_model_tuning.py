@@ -41,7 +41,7 @@ class CustomTuning(keras_tuner.HyperModel):
         
         return model.fit(
             *args,
-            batch_size=hp.Choice("batch_size", [16, 32]),
+            batch_size=hp.Choice("batch_size", p['batch_size']),
             **kwargs,
         )
 

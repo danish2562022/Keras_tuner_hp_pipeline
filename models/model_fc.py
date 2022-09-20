@@ -8,11 +8,12 @@ from tensorflow.keras import layers
 p = {
         "min_number_of_layers": 1,
         "max_number_of_layers": 5,
-        "model_type" : "r",
+        "model_type" : "r",    # "r" for regression and "c" for classification
         "min_units_per_layers" : 32,
         "max_units_per_layers" : 512,
         "num_of_classes" : 10,
         "choose_optimizer": "adam",
+        "batch_size" : [32,64,128]
         
     }
 
