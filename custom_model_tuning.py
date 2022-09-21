@@ -7,9 +7,8 @@ from tensorflow.keras import layers
 from tqdm import tqdm
       
 with open('config.yaml') as f:
-    config_file = yaml.load(f, Loader = yaml.FullLoader) 
-model_name = config_file['input_files']['models'].split("/")[-1].split(".")[0]
-program = "from models."+ model_name + " import build_model,p"
+    config = yaml.load(f, Loader = yaml.FullLoader) 
+program ="from " + ".".join(config['input_files']['models'].split('/')[0:-1])+"."+config['input_files']['models'].split("/")[-1].split(".")[0] + " import *"
 exec(program)
 class CustomTuning(keras_tuner.HyperModel):
 
