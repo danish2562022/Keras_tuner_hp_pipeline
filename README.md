@@ -37,14 +37,17 @@ Hyperparameter search space is defined in config.yml
     
      experiment_name: keras_tuner_fully_connected_pipeline
         input_files:
-        app: "hyperparameter_tuning_custom_training.py"
-        models: models/model_fc.py
-        dataset: datasets/data_loader_classification.py 
+            app: "hyperparameter_tuning_custom_training.py"
+            models: models/model_fc.py
+            dataset: datasets/data_loader_classification.py 
 
-    training_config:
-        epochs: 5
-        max_trials: 5
+        training_config:
+            epochs: 5
+            max_trials: 5    
   
+    --> config_file['input_files']['models']: Path of model
+
+    --> config_file['training_config']['max_trials']:  Number of hyperparamter fonfiguration(search space)
 
 ### Sample Tests
 
