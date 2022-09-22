@@ -75,6 +75,14 @@ Hyperparameter search space is defined in config.yml
     Trainable params: 381,610
     Non-trainable params: 0
     _________________________________________________________________
+    
+    
+   ### Load Best model
+   
+    import tensorflow as tf
+    from tensorflow import keras
+    best_model_path = os.path.join("best_model",config_file['experiment_name'],config_file['input_files']['models'].split("/")[1].split(".")[0])
+    model = keras.models.load_model(best_model_path)
 
 
 
