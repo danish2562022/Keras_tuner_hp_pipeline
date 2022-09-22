@@ -31,6 +31,21 @@ Say what the step will be
 
 Explain how to run the automated hyperparameter optimization pipeline
 
+
+## Configuration file
+Hyperparameter search space is defined in config.yml
+    
+     experiment_name: keras_tuner_fully_connected_pipeline
+        input_files:
+        app: "hyperparameter_tuning_custom_training.py"
+        models: models/model_fc.py
+        dataset: datasets/data_loader_classification.py 
+
+    training_config:
+        epochs: 5
+        max_trials: 5
+  
+
 ### Sample Tests
 
      $ snakemake --cores "all"
@@ -60,20 +75,6 @@ Explain how to run the automated hyperparameter optimization pipeline
 
 
 
-## Configuration file
-Hyperparameter search space is defined in config_param.json
-    
-     {
-     "min_number_of_layers": 1,
-    "max_number_of_layers": 5,
-    "model_type" : "c",
-    "min_units_per_layers" : 32,
-    "max_units_per_layers" : 512,
-    "num_of_classes" : 10,
-    "choose_optimizer": "adam",
-    "epochs" : 10,
-    "max_trials": 10
-    }
         
 
 ## Built With
