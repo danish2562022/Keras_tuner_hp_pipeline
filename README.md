@@ -56,7 +56,7 @@ Hyperparameter search space is defined in config.yml
  Best model's hyperparameters get saved in best_model_params.txt
 ### Sample Output
     
-    $ echo best_model/config[experiment_name]/config[input_files][models]/best_params.txt
+    $ cat best_model/config[experiment_name]/config[input_files][models]/best_params.txt
     
     {'num_layers': 1, 'units_1': 480, 'lr_1': 0.001096082336813933, 'activation_1': 'relu', 'dropout_1': False, 'batch_size': 64, 'lr': 0.0001}
 
