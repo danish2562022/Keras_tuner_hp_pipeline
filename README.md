@@ -28,7 +28,7 @@ Say what the step will be
 
 ## Running
 
-Explain how to run the automated hyperparameter optimization pipeline(https://www.youtube.com/watch?v=kCfhfJxXOOA&ab_channel=Danish)
+How to run the automated hyperparameter optimization pipeline(https://www.youtube.com/watch?v=kCfhfJxXOOA&ab_channel=Danish)
 
 
 ## Configuration file
