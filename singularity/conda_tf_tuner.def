@@ -13,8 +13,8 @@ From: continuumio/miniconda3
     apt-get update -y
     apt-get upgrade -y
     apt-get dist-upgrade -y
-    /opt/conda/bin/conda env create -f environment.yml
-    conda install python=3.9.12
+
+    /opt/conda/bin/conda env update --name base --file environment.yml --prune
     conda install libgcc
-    conda install -c conda-forge gxx_linux-64==11.1.0
+    
     
