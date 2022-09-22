@@ -38,7 +38,7 @@ Explain how to run the automated hyperparameter optimization pipeline
  Best model's hyperparameters get saved in best_model_params.txt
 ### Sample Output
     
-    
+    best_model/config[experiment_name]/config[input_files][models]
     {'num_layers': 1, 'units_1': 480, 'lr_1': 0.001096082336813933, 'activation_1': 'relu', 'dropout_1': False, 'batch_size': 64, 'lr': 0.0001}
 
     Model: "sequential"
