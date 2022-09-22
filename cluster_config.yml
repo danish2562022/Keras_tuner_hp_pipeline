@@ -1,0 +1,8 @@
+# cluster_config.yml - cluster configuration
+__default__:
+    account: SNIC2022-5-226
+    time: 01:00:00 # time limit for each job
+    gpus-per-node: A40:1
+    nodes: 1
+
+   
