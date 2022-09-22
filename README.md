@@ -18,9 +18,9 @@ To know more about Keras Tuner, kindly refer official [docs](https://keras.io/ap
 
 Say what the step will be
 
-    $ git clone https://github.com/danish2562022/hyperparameter_optimization_pipeline.git
-    $ cd hyperparameter_optimization_pipeline
-    $ pip install -r requirements.txt
+    $ git clone [https://github.com/danish2562022/hyperparameter_optimization_pipeline.git](https://github.com/danish2562022/Keras_tuner_hyperparameter_optimization.git)
+    $ cd Keras_tuner_hyperparameter_optimization
+    $ conda env create -f environment.yml
 
 
 
