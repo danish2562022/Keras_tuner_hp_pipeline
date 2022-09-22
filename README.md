@@ -21,6 +21,9 @@ Say what the step will be
     $ git clone [https://github.com/danish2562022/hyperparameter_optimization_pipeline.git](https://github.com/danish2562022/Keras_tuner_hyperparameter_optimization.git)
     $ cd Keras_tuner_hyperparameter_optimization
     $ conda env create -f environment.yml
+    $ conda activate snakemake
+   
+    
 
 
 
@@ -30,7 +33,7 @@ Explain how to run the automated hyperparameter optimization pipeline
 
 ### Sample Tests
 
-    $ python .\hyperparameter_tuning_custom_training.py --config_files "config_param.json"
+     $ snakemake --cores "all"
     
  Best model's hyperparameters get saved in best_model_params.txt
 ### Sample Output
