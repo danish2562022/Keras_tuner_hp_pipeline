@@ -1,5 +1,4 @@
-# Keras_tuner_hyperparameter_optimization
-Take Model as an input
+
 # Hyperparameter Optimization Pipeline for MultiGPUs
 
 Performance of machine learning model depends on the configuration of hyperparameters. Finding the optimal hyperparameters (hypeparameter tuning), could be very time consuming and challenging.  
