@@ -1,7 +1,7 @@
 experiment_name: keras_tuner_fully_connected_pipeline_2
 input_files:
     app: "hyperparameter_tuning_custom_training.py"
-    models: models/model_cnn.py
+    models: models/model_fc.py
     dataset: datasets/data_loader_classification.py 
 
 training_config:

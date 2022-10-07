@@ -5,6 +5,8 @@ from tensorflow import keras
 import numpy as np
 from tensorflow.keras import layers
 from tqdm import tqdm
+from matplotlib import pyplot as plt
+from keras_tuner.engine import tuner_utils
       
 with open('config.yaml') as f:
     config = yaml.load(f, Loader = yaml.FullLoader) 
@@ -43,5 +45,4 @@ class CustomTuning(keras_tuner.HyperModel):
             batch_size=hp.Choice("batch_size", p['batch_size']),
             **kwargs,
         )
-
         

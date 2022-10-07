@@ -7,6 +7,8 @@ from tensorflow import keras
 from custom_model_tuning import *
 import argparse
 import os
+import tensorflow as tf
+from modelcheckpoint_implementation import *
 
 
 st = time.time()
@@ -39,7 +41,7 @@ args = parser.parse_args()
 model_name = args.import_model_dataloader.split(" ")[-3].split(".")[-1]
 exec(args.import_model_dataloader)
 obj = "val_accuracy" if p['model_type'] == "c" else "val_loss"
-tuner = keras_tuner.RandomSearch(
+tuner = RandomSearch(
         hypermodel = CustomTuning(),
         objective = obj,
         max_trials = args.max_trials,
@@ -49,8 +51,11 @@ tuner = keras_tuner.RandomSearch(
         project_name= str(model_name)+"_results",
     )
 
-x_train,x_test,x_val,y_train,y_test,y_val = load_data() 
-tuner.search(x_train, y_train, epochs=args.epochs, validation_data=(x_val, y_val))
+x_train,x_test,x_val,y_train,y_test,y_val = load_data()
+
+es = tf.keras.callbacks.EarlyStopping(patience=5,verbose = 1) 
+
+tuner.search(x_train, y_train, epochs=args.epochs, validation_data=(x_val, y_val), callbacks=[es])
 best_hps = tuner.get_best_hyperparameters()[0]
 
 
@@ -74,3 +79,5 @@ with open(best_hps_save, "w") as external_file:
     with redirect_stdout(external_file):
         rest_model.summary()
     external_file.close()
+
+
